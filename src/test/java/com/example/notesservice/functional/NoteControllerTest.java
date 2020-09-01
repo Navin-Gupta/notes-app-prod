@@ -210,7 +210,7 @@ class NoteControllerTest {
 		
 		Mockito.when(noteService.findAllByStatus("pending")).thenReturn(list);
 		
-		MvcResult result = mockMvc.perform(get("/noteservice/findByStatus/pending").contentType(MediaType.APPLICATION_JSON)).andReturn();
+		MvcResult result = mockMvc.perform(get("/noteservice/findbyStatus/pending").contentType(MediaType.APPLICATION_JSON)).andReturn();
   		yakshaAssert(currentTest(), 
   				result.getResponse().getContentAsString().contentEquals(asJsonString(list))? true : false,businessTestFile);
 		
@@ -235,7 +235,7 @@ class NoteControllerTest {
 				return list;
 			}
 		});
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/noteservice/delete/id")
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/noteservice/findbyStatus/pending")
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON);
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
@@ -254,7 +254,7 @@ class NoteControllerTest {
 		List<NotesDto> list = new ArrayList<NotesDto>();
 		list.add(note1);list.add(note2);
 		
-		Mockito.when(noteService.findAllByStatus("praveen")).thenReturn(list);
+		Mockito.when(noteService.findAllByAuthor("praveen")).thenReturn(list);
 		
 		MvcResult result = mockMvc.perform(get("/noteservice/findByAuthor/praveen").contentType(MediaType.APPLICATION_JSON)).andReturn();
   		yakshaAssert(currentTest(), 
@@ -282,7 +282,7 @@ class NoteControllerTest {
 				return list;
 			}
 		});
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/noteservice/delete/id")
+		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/noteservice/findByAuthor/praveen")
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON);
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
