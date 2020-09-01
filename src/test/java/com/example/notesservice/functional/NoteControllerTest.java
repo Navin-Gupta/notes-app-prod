@@ -52,7 +52,7 @@ class NoteControllerTest {
 				.accept(MediaType.APPLICATION_JSON);
 				
 		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-		 List<NotesDto> list1 = Mockito.verify(noteService).findAll(); // argument captors
+		 
 		System.out.println(result.getResponse().getContentAsString());
 		System.out.println(asJsonString(list));
 		yakshaAssert(currentTest(), 
